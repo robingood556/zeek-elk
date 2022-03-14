@@ -1,0 +1,49 @@
+version: "3.0"
+services:
+  elasticsearch:
+    container_name: es-container
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.0.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    networks:
+      - testelk
+    ports:
+      - 9200:9200
+
+  kibana:
+    container_name: kb-container
+    image: docker.elastic.co/kibana/kibana:8.0.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-container:9200
+    networks:
+      - testelk
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+
+  filebeat:
+    container_name: fb-container
+    build:
+      context: files/
+    user: root
+    volumes:
+      - type: bind
+        source: /var/lib/docker/containers
+        target: /var/lib/docker/containers
+        read_only: true
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        read_only: true
+    command: filebeat -e -c /usr/share/filebeat/filebeat.yml
+    networks:
+      - testelk
+    depends_on:
+      - elasticsearch
+
+networks:
+  testelk:
+    driver: bridge
