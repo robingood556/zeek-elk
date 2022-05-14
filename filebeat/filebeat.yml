@@ -1,0 +1,8 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /usr/local/zeek/logs/current/*.log
+
+output.logstash:
+  hosts: ["${LOGSTACH_HOSTS}"]
