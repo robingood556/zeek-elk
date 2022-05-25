@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{% static 'zeek/index.css' %}" />
+        <title>Zeek logs</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="logo"></div>
+                <form action="{{ request.build_absolute_uri }}validate/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="content">
+                    <label class="input">
+                        <input class="input__field" type="text" placeholder=" " name="nodes" />
+                        <span class="input__label">Elasticsearch nodes</span>
+                    </label>
+                    <label class="input">
+                        <input class="input__field" type="text" placeholder=" " name="username" />
+                        <span class="input__label">Elasticsearch username</span>
+                    </label>
+                    <label class="input">
+                        <input class="input__field" type="text" placeholder=" " name="password" />
+                        <span class="input__label">Elasticsearch password</span>
+                    </label>
+                    <label class="input">
+                        <input type="file" id="file" name="file" />
+                    </label>
+                     <label class="input">
+                        <input class="input__field" type="submit" value="Go"/>
+                    </label>
+                </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
