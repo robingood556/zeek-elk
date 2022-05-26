@@ -24,14 +24,15 @@
                         <span class="input__label">Elasticsearch username</span>
                     </label>
                     <label class="input">
-                        <input class="input__field" type="text" placeholder=" " name="password" />
+                        <input class="input__field" type="password" placeholder=" " name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters" />
                         <span class="input__label">Elasticsearch password</span>
                     </label>
+                    <label class="input" for="pcap">Choose PCAP file</label>
                     <label class="input">
-                        <input type="file" id="file" name="file" />
+                        <input type="file" id="file" name="file" value="Choose pcap file" />
                     </label>
                      <label class="input">
-                        <input class="input__field" type="submit" value="Go"/>
+                        <input class="input__field" type="submit" placeholder= " " name="submit" value="Go" />
                     </label>
                 </div>
                 </form>

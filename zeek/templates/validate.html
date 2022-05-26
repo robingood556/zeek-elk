@@ -1,11 +1,28 @@
-<html>
-  <head>
-    <title>Href Attribute Example</title>
-  </head>
-  <body>
-    <h1>Href Attribute Example</h1>
-    <p>
-      <a href="https://www.freecodecamp.org/contribute/">The freeCodeCamp Contribution Page</a> shows you how and where you can contribute to freeCodeCamp's community and growth.
-    </p>
-  </body>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{% static 'zeek/index.css' %}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin Sans">
+        <title>Zeek logs</title>
+    <style>
+     body {
+       font-family: "Josefin Sans", normal;
+       font-size: 20px;
+     }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="logo"></div>
+                <div class="content">
+                <p>Nice! Wait for the docker container to build. And go to kibana - ip-address:port{default 5601}</p>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
