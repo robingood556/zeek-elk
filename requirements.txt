@@ -1,0 +1,9 @@
+asgiref==3.4.1
+Django==3.2.13
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+numpy==1.19.5
+pytz==2022.1
+PyYAML==6.0
+sqlparse==0.4.2
+typing-extensions==4.1.1
