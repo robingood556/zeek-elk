@@ -14,8 +14,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 
-COPY filebeat-8.0.0-amd64.deb ./
-RUN dpkg -i filebeat-8.0.0-amd64.deb
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.0.0-amd64.deb \
+  && dpkg -i filebeat-8.0.0-amd64.deb
 
 ENV PATH $PATH:/opt/zeek/bin
 
@@ -27,4 +27,4 @@ RUN zeekctl install \
   && zeekctl deploy
  
 COPY net.pcap ./
-RUN zeek -r net.pcap LogAscii::use_json=T
+RUN zeek -r net.pcap LogAscii::use_json=T LogAscii::logdir=/opt/zeek/logs/current/

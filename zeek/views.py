@@ -29,8 +29,8 @@ def validate(request):
         password = request.POST['password']
         nodes = int(request.POST['nodes'])
 
-        for number in range(nodes):
-           es_data.append("es" + str(number))
+        for number in range(1, nodes+1):
+           es_data.append("es0" + str(number))
         
 
         es_data = ','.join(es_data)
@@ -47,14 +47,14 @@ def validate(request):
         file_docker.write(template_docker.render(dict))
         file_docker.close()
 
-        file_env = open(".env", "a")
+        file_env = open(".env", "w")
         file_env.write(template_env.render(dict))
         file_env.close()
         
 
         handle_uploaded_file(request.FILES['file'], str(request.FILES['file']))
 
-        subprocess.call(["docker-compose up -d"], shell=True)
+        subprocess.call(["docker compose up -d"], shell=True)
 
     return render(request, "validate.html")
 
