@@ -28,19 +28,12 @@ def validate(request):
         username = request.POST['username']
         password = request.POST['password']
         nodes = int(request.POST['nodes'])
-
-        for number in range(1, nodes+1):
-           es_data.append("es0" + str(number))
-        
-
-        es_data = ','.join(es_data)
       
         dict = {
         
             'username': username,
             'password': password,
-            'nodes': nodes,
-            'es_data': es_data
+            'nodes': nodes
         }
 
         file_docker = open("docker-compose"+".yml", "w")

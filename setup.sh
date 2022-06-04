@@ -1,10 +1,11 @@
 #!/bin/bash
 
-VERSION="8.0.0"
+STACK_VERSION=8.0.0
 
-docker pull elasticsearch:$VERSION
-docker pull kibana:$VERSION  
-docker pull logstash:$VERSION
+docker pull elasticsearch:$STACK_VERSION
+docker pull kibana:$STACK_VERSION
+docker pull logstash:$STACK_VERSION
+docker pull debian:11
 
-python manage.py runserver $1
+python3 manage.py runserver $1
 
