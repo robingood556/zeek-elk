@@ -32,6 +32,6 @@ output.elasticsearch:
   username: "${ELASTICSEARCH_USERNAME}"
   password: "${ELASTICSEARCH_PASSWORD}"
   ssl:
-    certificate_authorities: /usr/share/metricbeat/certs/ca/ca.crt
+    certificate_authorities: "/usr/share/metricbeat/${ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES}"
     enabled: true
 
