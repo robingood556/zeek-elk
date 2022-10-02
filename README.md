@@ -1,4 +1,4 @@
-# diplom
+# ZEEK framework
 Zeek-elk stack
 
 Start project
